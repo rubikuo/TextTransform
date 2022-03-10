@@ -1,0 +1,23 @@
+.Content {
+  padding: 3% 5%;
+
+  &__title {
+    color: $color-dark-pink;
+  }
+
+  &__text {
+    &--strong {
+      color: $color-bright-pink;
+    }
+  }
+
+  &__article {
+    color: $color-silver;
+    mark {
+      background-color: transparent;
+      color: rgb(230, 80, 158);
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+  }
+}

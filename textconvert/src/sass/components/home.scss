@@ -1,0 +1,11 @@
+.Home {
+  text-align: center;
+  &__text--error {
+    color: $color-error;
+    margin-top: 1rem;
+  }
+
+  &__loading {
+    margin-top: 3rem;
+  }
+}

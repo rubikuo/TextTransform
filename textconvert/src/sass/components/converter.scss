@@ -1,0 +1,36 @@
+.Converter {
+  width: 60%;
+  max-width: 500px;
+  min-width: 400px;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: $color-bright-pink;
+
+  form {
+    @include Flexbox(center, center, true, unset);
+  }
+
+  label {
+    font-size: $fs-h3;
+  }
+
+  input[type="file"],
+  &__btn {
+    width: 65%;
+    max-width: 300px;
+    min-width: 200px;
+    margin: 10px auto;
+    font-size: $fs-h5;
+    border: none;
+  }
+
+  &__btn {
+    padding: 5px 0;
+
+    &:hover {
+      background-color: $color-black;
+      color: $color-bright-pink;
+      font-weight: 700;
+    }
+  }
+}
