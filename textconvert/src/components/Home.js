@@ -1,32 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
 import Converter from "./Converter";
 import Content from "./Content";
 import ReactLoading from "react-loading";
+import { FileContext } from "../contexts/FileContext";
 
 const Home = () => {
-  const [file, setFile] = useState({
-    name: "choose file",
-    mostUsedWords: [],
-    mostUsedWordsConverted: [],
-    occurrence: 0,
-    convertedContent: "",
-  });
-  const [uploadedFile, setUploadedFile] = useState("");
-  const [isUploaded, setIsUploaded] = useState("preUploaded");
-  const [errorMsg, setErrorMsg] = useState("");
+  const { file, errorMsg, isUploaded } = useContext(FileContext);
 
   return (
     <div className="Home">
-      <Converter
-        file={file}
-        setFile={setFile}
-        uploadedFile={uploadedFile}
-        setUploadedFile={setUploadedFile}
-        isUploaded={isUploaded}
-        setIsUploaded={setIsUploaded}
-        errorMsg={errorMsg}
-        setErrorMsg={setErrorMsg}
-      />
+      <Converter />
       {errorMsg !== "" && (
         <p className="Home__text Home__text--error">{errorMsg}</p>
       )}

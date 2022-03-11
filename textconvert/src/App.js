@@ -1,11 +1,14 @@
 import Header from "./components/Header";
 import Home from "./components/Home";
+import FileContextProvider from "./contexts/FileContext";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Home />
+      <FileContextProvider>
+        <Header />
+        <Home />
+      </FileContextProvider>
     </div>
   );
 }
