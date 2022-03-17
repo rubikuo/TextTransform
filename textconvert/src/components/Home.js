@@ -2,6 +2,7 @@ import { useState } from "react";
 import Converter from "./Converter";
 import Content from "./Content";
 import ReactLoading from "react-loading";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [file, setFile] = useState({
@@ -14,7 +15,7 @@ const Home = () => {
   const [uploadedFile, setUploadedFile] = useState("");
   const [isUploaded, setIsUploaded] = useState("preUploaded");
   const [errorMsg, setErrorMsg] = useState("");
-
+  // const errorMessage = useSelector((state) => state.errorMsg);
   return (
     <div className="Home">
       <Converter

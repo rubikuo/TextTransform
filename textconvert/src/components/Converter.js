@@ -3,6 +3,7 @@ import axios from "axios";
 const Converter = ({
   file,
   setFile,
+  errorMsg,
   setErrorMsg,
   setIsUploaded,
   uploadedFile,
@@ -89,7 +90,12 @@ const Converter = ({
           onChange={(e) => handleFileUpload(e)}
         />
 
-        <input className="Converter__btn" type="submit" value="Upload" />
+        <input
+          disabled={errorMsg !== "" ? true : false}
+          className="Converter__btn"
+          type="submit"
+          value="Upload"
+        />
       </form>
     </div>
   );

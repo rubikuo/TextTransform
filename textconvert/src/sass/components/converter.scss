@@ -26,7 +26,12 @@
 
   &__btn {
     padding: 5px 0;
-
+    &:disabled,
+    &:disabled:hover {
+      background-color: $color-silver;
+      color: $color-dark-grey;
+      font-weight: 400;
+    }
     &:hover {
       background-color: $color-black;
       color: $color-bright-pink;
