@@ -1,24 +1,18 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { uploadFile, resetFile } from "../features/file";
 
 const Converter = ({
-  file,
-  setFile,
   errorMsg,
   setErrorMsg,
   setIsUploaded,
   uploadedFile,
   setUploadedFile,
 }) => {
+  const dispatch = useDispatch();
   const handleFileUpload = (e) => {
     setErrorMsg("");
-    setFile({
-      ...file,
-      name: "",
-      mostUsedWords: [],
-      mostUsedWordsConverted: [],
-      occurrence: 0,
-      convertedContent: "",
-    });
+    dispatch(resetFile());
 
     let uploadedFile = e.target.files[0];
 
@@ -58,15 +52,18 @@ const Converter = ({
       })
       .then((res) => {
         let { mostWords, maxNum, convertedWords, result } = res.data;
+        console.log("hello", mostWords, maxNum, convertedWords, result);
 
-        setFile({
-          ...file,
-          name: uploadedFile.name,
-          mostUsedWords: [...mostWords],
-          mostUsedWordsConverted: [...convertedWords],
-          occurrence: maxNum,
-          convertedContent: result,
-        });
+        dispatch(
+          uploadFile({
+            name: uploadedFile.name,
+            mostUsedWords: [...mostWords],
+            mostUsedWordsConverted: [...convertedWords],
+            occurrence: maxNum,
+            convertedContent: result,
+          })
+        );
+
         setIsUploaded("uploaded");
       })
       .catch((err) => {
