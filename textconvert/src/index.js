@@ -2,11 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
 import "./sass/main.scss";
+import errorReducer from "./features/errorMsg";
+import fileReducer from "./features/file";
+
+const store = configureStore({
+  reducer: {
+    file: fileReducer,
+    errorMsg: errorReducer, // the key value must match the "name" defined in the errorMsg.js and it should be a string
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

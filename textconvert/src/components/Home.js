@@ -2,24 +2,19 @@ import { useState } from "react";
 import Converter from "./Converter";
 import Content from "./Content";
 import ReactLoading from "react-loading";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [file, setFile] = useState({
-    name: "choose file",
-    mostUsedWords: [],
-    mostUsedWordsConverted: [],
-    occurrence: 0,
-    convertedContent: "",
-  });
   const [uploadedFile, setUploadedFile] = useState("");
   const [isUploaded, setIsUploaded] = useState("preUploaded");
   const [errorMsg, setErrorMsg] = useState("");
-
+  const file = useSelector((state) => state.file.value);
+  // const errorMessage = useSelector((state) => state.errorMsg);
   return (
     <div className="Home">
       <Converter
-        file={file}
-        setFile={setFile}
+        // file={file}
+        // setFile={setFile}
         uploadedFile={uploadedFile}
         setUploadedFile={setUploadedFile}
         isUploaded={isUploaded}
@@ -41,7 +36,7 @@ const Home = () => {
       ) : errorMsg === "" &&
         isUploaded === "uploaded" &&
         file.convertedContent !== "" ? (
-        <Content file={file} />
+        <Content />
       ) : null}
     </div>
   );

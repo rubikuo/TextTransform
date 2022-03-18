@@ -1,7 +1,9 @@
 import React from "react";
 import Highlighter from "react-highlight-words";
+import { useSelector } from "react-redux";
 
-const Content = ({ file }) => {
+const Content = () => {
+  const file = useSelector((state) => state.file.value);
   return (
     <div className="Content">
       <h3 className="Content__title">{file.name}</h3>
